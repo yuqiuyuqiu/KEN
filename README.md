@@ -7,11 +7,12 @@ This code is licensed for non-commerical research purpose only.
 ### Introduction
 
 Most efforts on lesion segmentation from CT slices focus on one specific lesion type. However, universal and multi-category lesion segmentation is more important because the diagnoses of different body parts are usually correlated and carried out simultaneously. The existing universal lesion segmentation methods are weakly-supervised due to the lack of pixel-level annotation data. To bring this field into the fully-supervised era, we establish a large-scale universal lesion segmentation dataset, SegLesion. We also propose a baseline method for this task. Considering that it is easy to encode CT slices owing to the limited CT scenarios, we propose a Knowledge Embedding Module (KEM) to adapt the concept of dictionary learning for this task. Specifically, KEM first learns the knowledge encoding of CT slices and then embeds the learned knowledge encoding into the deep features of a CT slice to increase the distinguishability. With KEM incorporated, a Knowledge Embedding Network (KEN) is designed for universal lesion segmentation. To extensively compare KEN to previous segmentation methods, we build a large benchmark for SegLesion. KEN achieves state-of-the-art performance and can thus serve as a strong baseline for future research.
+![SegLesion](figures/location.jpg)
 
 ![SegLesion](figures/size.jpg)
 ![SegLesion](figures/numberPie.jpg)
 ![SegLesion](figures/width_height.jpg)
-![SegLesion](figures/location.jpg)
+
 
 ![KEN](figures/frame.jpg)
 
