@@ -10,9 +10,11 @@ Most efforts on lesion segmentation from CT slices focus on one specific lesion 
 
 ![KEN](figures/frame.jpg)
 
+### SegLesion
+
 - [SegLesion-Data Collection and Annotation] We select 9816 lesions in 9624 CT slices from DeepLesion and carefully label them with pixel-level masks using the online annotation tool of Polygon-RNN++(http://www.cs.toronto.edu/~amlan/demo/). To ensure the accuracy and reliability, we conduct a triple-check annotation process, and the third annotator is an experienced doctor. Moreover, we abandon some CT slices with lesions whose boundaries are fuzzy for accurate recognition or whose masks are too small to label manually. Finally, SegLesion is composed of 9623 lesions in 9456 CT slices from 4321 series of 3178 studies of 1356 unique patients.
 - [SegLesion-Data Statistics] All CT slices in SegLesion are in a resolution of $512\times 512$. The distribution of the lesion sizes is shown in below, from which we can see that most lesions only occupy a small part of the whole image. In detail, about 71.3\% of lesions have a size ranging from 64 pixels to 1024 pixels.
-![SegLesion](figures/size.jpg)
+![SegLesion](figures/size.jpg)![SegLesion](figures/width_height.jpg)
 The number of lesions whose sizes are over 4096 ($64\times 64$) pixels is 368, only accounting for 3.8\% of all lesions in SegLesion. Among all lesions, the smallest one only has 8 pixels, and the largest one has 57161 pixels, occupying 21.8\% of the entire image. We also plot a height vs width figure for all lesions.
 ![SegLesion](figures/width_height.jpg)
 It is easy to see that the lesions in SegLesion are very small in general. We plot the locations of center points of lesions. We can observe that the lesions are randomly distributed on the CT slices without bias, indicating the universal property of SegLesion.
@@ -43,7 +45,8 @@ The code is built with the following dependencies:
 
 ### Data Preparation
 The SegLesion can be downloaded:
-- [SegLesion](https://drive.google.com/file/d/19JQ919DJw8CVs0xuUsLEffAugzlpbOHN/view?usp=sharing)
+- [BaiDuYun](https://drive.google.com/file/d/19JQ919DJw8CVs0xuUsLEffAugzlpbOHN/view?usp=sharing)
+- [GoogleDrive](https://drive.google.com/file/d/19JQ919DJw8CVs0xuUsLEffAugzlpbOHN/view?usp=sharing)
 
 *The SegLesion dataset is organized into the following tree structure:*
 ```
@@ -56,18 +59,22 @@ dataset
 └───train_set.txt
 └───val_set.txt
 └───test_set.txt
+└───test_set_type.txt
+└───class_set.txt
 '''
 ```
 
 
 ### Testing
-The pretrained model of CoANet can be downloaded:
-- [KEN-VGG16](https://drive.google.com/file/d/19JQ919DJw8CVs0xuUsLEffAugzlpbOHN/view?usp=sharing)
-- [KEN-ResNet50](https://drive.google.com/file/d/1XR5J0voGa8ammhh2y3e0u3b-EsjbJCmE/view?usp=sharing)
+The pretrained model of KEN can be downloaded:
+- [VGG16](https://drive.google.com/file/d/1DIk1hdhNKPqQuu0o1u2ZJEnImhreRvFn/view?usp=sharing)
+- [KEN-VGG16](https://drive.google.com/file/d/1DIk1hdhNKPqQuu0o1u2ZJEnImhreRvFn/view?usp=sharing)
+- [ResNet50](https://drive.google.com/file/d/1wynnHTR3i28O-Fpf8CK3qNnYbCjVt__M/view?usp=sharing)
+- [KEN-ResNet50](https://drive.google.com/file/d/1wynnHTR3i28O-Fpf8CK3qNnYbCjVt__M/view?usp=sharing)
 
 Run the following scripts to test the model:
 ```Shell
-./FastSal/test.sh [--pretrained ./results_mod50/KEN_VGG.pth]
+./FastSal/test.sh [--pretrained ./results_mod50/KEN_ResNet.pth]
                 [--file_list test_set.txt]
                 [--savedir ./output/]
 ```
@@ -75,16 +82,16 @@ Run the following scripts to test the model:
 
 ### Evaluate
 
-Run the following scripts to test the model:
+Run the following scripts to evaluate the model:
 ```
 python evaluate.py
 ```
 
 ### Training
-Run the following scripts to test the model:
+Run the following scripts to train the model:
 
 ```Shell
-./FastSal/test.sh [--cached_data_file ./duts_train.p]
+./FastSal/train_resnet.sh [--cached_data_file ./duts_train.p]
                 [--max_epochs 50]
                 [--num_workers 4]
                 [--batch_size 16]
