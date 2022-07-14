@@ -10,13 +10,15 @@ Most efforts on lesion segmentation from CT slices focus on one specific lesion 
 
 ![KEN](figures/frame.jpg)
 
-### SegLesion
-
-![SegLesion](figures/location.jpg)
+- [SegLesion-Data Collection and Annotation] We select 9816 lesions in 9624 CT slices from DeepLesion and carefully label them with pixel-level masks using the online annotation tool of Polygon-RNN++(http://www.cs.toronto.edu/~amlan/demo/). To ensure the accuracy and reliability, we conduct a triple-check annotation process, and the third annotator is an experienced doctor. Moreover, we abandon some CT slices with lesions whose boundaries are fuzzy for accurate recognition or whose masks are too small to label manually. Finally, SegLesion is composed of 9623 lesions in 9456 CT slices from 4321 series of 3178 studies of 1356 unique patients.
+- [SegLesion-Data Statistics] All CT slices in SegLesion are in a resolution of $512\times 512$. The distribution of the lesion sizes is shown in below, from which we can see that most lesions only occupy a small part of the whole image. In detail, about 71.3\% of lesions have a size ranging from 64 pixels to 1024 pixels.
 ![SegLesion](figures/size.jpg)
-![SegLesion](figures/numberPie.jpg)
+The number of lesions whose sizes are over 4096 ($64\times 64$) pixels is 368, only accounting for 3.8\% of all lesions in SegLesion. Among all lesions, the smallest one only has 8 pixels, and the largest one has 57161 pixels, occupying 21.8\% of the entire image. We also plot a height vs width figure for all lesions.
 ![SegLesion](figures/width_height.jpg)
-
+It is easy to see that the lesions in SegLesion are very small in general. We plot the locations of center points of lesions. We can observe that the lesions are randomly distributed on the CT slices without bias, indicating the universal property of SegLesion.
+![SegLesion](figures/location.jpg)
+Following DeepLesion, we coarsely divide the 9456 CT slices of SegLesion into eight types, including lung (2346), abdomen (2099), mediastinum (1619), liver (1193), pelvis (834), soft tissue (647), kidney (479), and bone (239), as depicted in below.
+![SegLesion](figures/numberPie.jpg)
 
 
 
