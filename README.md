@@ -62,9 +62,9 @@ dataset
 ### Testing
 The pretrained model of KEN can be downloaded:
 - [VGG16](https://drive.google.com/file/d/1DIk1hdhNKPqQuu0o1u2ZJEnImhreRvFn/view?usp=sharing)
-- [KEN-VGG16](https://drive.google.com/file/d/1DIk1hdhNKPqQuu0o1u2ZJEnImhreRvFn/view?usp=sharing)
+- [KEN-VGG16]
 - [ResNet50](https://drive.google.com/file/d/1wynnHTR3i28O-Fpf8CK3qNnYbCjVt__M/view?usp=sharing)
-- [KEN-ResNet50](https://drive.google.com/file/d/1wynnHTR3i28O-Fpf8CK3qNnYbCjVt__M/view?usp=sharing)
+- [KEN-ResNet50]
 
 Run the following scripts to test the model:
 ```Shell
